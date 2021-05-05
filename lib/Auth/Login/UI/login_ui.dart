@@ -1,6 +1,8 @@
 import 'package:animation_wrappers/Animations/faded_translation_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:international_phone_input/international_phone_input.dart';
 import 'package:opus_banking/Components/custom_button.dart';
 import 'package:opus_banking/Components/entry_field.dart';
 import 'package:opus_banking/Locale/locale.dart';
@@ -19,6 +21,11 @@ class LoginUI extends StatefulWidget {
 
 class _LoginUIState extends State<LoginUI> {
   final TextEditingController _numberController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  String phoneNumber;
+  String phoneIsoCode;
+  bool hidePass = true;
 
   @override
   void dispose() {
@@ -73,9 +80,9 @@ class _LoginUIState extends State<LoginUI> {
                             .scaffoldBackgroundColor,
                         fontSize: 24),
                     children: <TextSpan>[
-                      TextSpan(text: 'Mobile '),
+                      TextSpan(text: 'Cloud '),
                       TextSpan(
-                          text: 'Banking',
+                          text: 'Pesa',
                           style: TextStyle(fontWeight: FontWeight.w300)),
                     ])),
             Spacer(
@@ -97,24 +104,65 @@ class _LoginUIState extends State<LoginUI> {
       SizedBox(
         height: 20,
       ),
-      Padding(
+
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 12),
+                child: InternationalPhoneInput(
+                  onPhoneNumberChange: onPhoneNumberChange,
+                  initialPhoneNumber: phoneNumber,
+                  initialSelection: phoneIsoCode,
+                  enabledCountries: ['+254', '+255', '+256'],
+                  showCountryCodes: true,
+                  showCountryFlags: true,
+                  labelText: locale.phoneCustomerID,
+                ),
+                //child: EntryField(
+                // hint: locale.emailCustomerID,
+                //),
+              ),
+      /*Padding(
         padding: EdgeInsets.symmetric(horizontal: 25, vertical: 12),
         child: EntryField(
           hint: locale.phoneCustomerID,
         ),
-      ),
-      Padding(
+      ),*/
+   /*   Padding(
         padding: EdgeInsets.symmetric(horizontal: 25),
         child: EntryField(
           hint: locale.entermPin,
         ),
-      ),
+      ),*/
+
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 25),
+                child: TextFormField(
+                  controller: _passwordController,
+                  obscureText: hidePass,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: locale.enterIDNumber,
+                    labelStyle: GoogleFonts.quicksand(color: Color(0xff39c526)),
+                    icon: Icon(Icons.lock_outline),
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return locale.passwordFieldEmpty;
+                    } else if (value.length < 6) {
+                      return locale.passwordLength;
+                    }
+                    return null;
+                  },
+                ),
+                // child: EntryField(
+                //   hint: locale.entermPin,
+                // ),
+              ),
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 12),
         child: CustomButton(
           onTap: () =>
               widget.loginInteractor
-                  .loginWithID('isoCode', 'mobileNumber'),
+                  .loginWithID(phoneNumber, _passwordController.value.toString()),
           label: locale.signIn,
         ),
       ),
@@ -154,5 +202,13 @@ class _LoginUIState extends State<LoginUI> {
     )
     ,
     );
+  }
+  void onPhoneNumberChange(
+      String number, String internationalizedPhoneNumber, String isoCode) {
+    print(number);
+    setState(() {
+      phoneNumber = number;
+      phoneIsoCode = isoCode;
+    });
   }
 }

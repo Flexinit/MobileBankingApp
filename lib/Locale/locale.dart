@@ -53,6 +53,10 @@ class AppLocalizations {
     return _localizedValues[locale.languageCode]['entermPin'];
   }
 
+  String get enterIDNumber {
+    return _localizedValues[locale.languageCode]['enterIDNumber'];
+  }
+
   String get confirmPassword {
     return _localizedValues[locale.languageCode]['confirmPassword'];
   }
@@ -264,6 +268,10 @@ class AppLocalizations {
 
   String get uploadDeposit {
     return _localizedValues[locale.languageCode]['uploadDeposit'];
+  }
+
+  String get withdraw {
+    return _localizedValues[locale.languageCode]['withdraw'];
   }
 
   String get pendingDeposits {

@@ -15,6 +15,7 @@ class Option {
   String image;
   String title;
   Function onTap;
+
   Option(this.image, this.title, this.onTap);
 }
 
@@ -38,7 +39,9 @@ class _HomePageState extends State<HomePage> {
       Option('assets/icons/ic_deposite.png', locale.deposits, () {
         Navigator.pushNamed(context, PageRoutes.deposits);
       }),
-      Option('assets/icons/ic_more.png', locale.more, () {}),
+      Option('assets/icons/ic_more.png', locale.withdraw, () {}),
+      Option('assets/icons/ic_loan.png', locale.deposits, () {}),
+      Option('assets/icons/ic_deposite.png', locale.deposits, () {}),
     ];
     return Scaffold(
       body: ListView(
@@ -59,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                     color: Theme.of(context).primaryColor,
                     width: MediaQuery.of(context).size.width,
                     child: Text(
-                      'Opus Banking',
+                      'Mobile Banking',
                       style: Theme.of(context).textTheme.headline6.copyWith(
                           color: Theme.of(context).scaffoldBackgroundColor),
                       textAlign: TextAlign.center,
@@ -102,12 +105,12 @@ class _HomePageState extends State<HomePage> {
                           ),
                         );
                       }),
-                  GestureDetector(
+          /*        GestureDetector(
                       onTap: () {
                         Navigator.pushNamed(context, PageRoutes.travelLoans);
                       },
                       child: FadedScaleAnimation(
-                          Image.asset('assets/offer 1.png'))),
+                          Image.asset('assets/offer 1.png'))),*/
                   SizedBox(
                     height: 15,
                   ),
