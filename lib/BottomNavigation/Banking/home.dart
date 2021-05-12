@@ -15,7 +15,6 @@ class Option {
   String image;
   String title;
   Function onTap;
-
   Option(this.image, this.title, this.onTap);
 }
 
@@ -39,9 +38,7 @@ class _HomePageState extends State<HomePage> {
       Option('assets/icons/ic_deposite.png', locale.deposits, () {
         Navigator.pushNamed(context, PageRoutes.deposits);
       }),
-      Option('assets/icons/ic_more.png', locale.withdraw, () {}),
-      Option('assets/icons/ic_loan.png', locale.deposits, () {}),
-      Option('assets/icons/ic_deposite.png', locale.deposits, () {}),
+      Option('assets/icons/ic_more.png', locale.more, () {}),
     ];
     return Scaffold(
       body: ListView(
@@ -62,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                     color: Theme.of(context).primaryColor,
                     width: MediaQuery.of(context).size.width,
                     child: Text(
-                      'Mobile Banking',
+                      'Cloud Pesa',
                       style: Theme.of(context).textTheme.headline6.copyWith(
                           color: Theme.of(context).scaffoldBackgroundColor),
                       textAlign: TextAlign.center,
@@ -83,9 +80,9 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               index <= 2
                                   ? Divider(
-                                      indent: 25,
-                                      endIndent: 25,
-                                    )
+                                indent: 25,
+                                endIndent: 25,
+                              )
                                   : SizedBox.shrink(),
                               FadedScaleAnimation(
                                 Image.asset(
@@ -105,12 +102,12 @@ class _HomePageState extends State<HomePage> {
                           ),
                         );
                       }),
-          /*        GestureDetector(
+                  GestureDetector(
                       onTap: () {
                         Navigator.pushNamed(context, PageRoutes.travelLoans);
                       },
                       child: FadedScaleAnimation(
-                          Image.asset('assets/offer 1.png'))),*/
+                          Image.asset('assets/offer 1.png'))),
                   SizedBox(
                     height: 15,
                   ),
@@ -151,20 +148,20 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 Padding(
                                   padding:
-                                      const EdgeInsets.symmetric(vertical: 6.0),
+                                  const EdgeInsets.symmetric(vertical: 6.0),
                                   child: Text(
                                     '0014 1241 5574',
                                     style: Theme.of(context)
                                         .textTheme
                                         .headline6
                                         .copyWith(
-                                            color: Theme.of(context)
-                                                .scaffoldBackgroundColor),
+                                        color: Theme.of(context)
+                                            .scaffoldBackgroundColor),
                                   ),
                                 ),
                                 Padding(
                                   padding:
-                                      const EdgeInsets.symmetric(vertical: 4.0),
+                                  const EdgeInsets.symmetric(vertical: 4.0),
                                   child: CustomButton(
                                     height: 40,
                                     width: 120,
@@ -175,8 +172,8 @@ class _HomePageState extends State<HomePage> {
                                         .textTheme
                                         .bodyText2
                                         .copyWith(
-                                            color: Theme.of(context)
-                                                .scaffoldBackgroundColor),
+                                        color: Theme.of(context)
+                                            .scaffoldBackgroundColor),
                                   ),
                                 ),
                                 Spacer(),
@@ -186,8 +183,8 @@ class _HomePageState extends State<HomePage> {
                                       .textTheme
                                       .bodyText1
                                       .copyWith(
-                                          color:
-                                              Theme.of(context).primaryColor),
+                                      color:
+                                      Theme.of(context).primaryColor),
                                 ),
                               ],
                             ),

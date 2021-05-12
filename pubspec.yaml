@@ -29,7 +29,8 @@ dependencies:
 
   animation_wrappers: ^0.0.1
   international_phone_input: ^1.0.4
-
+  imei_plugin: ^1.0.0
+  #sms_autofill: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -44,7 +45,7 @@ flutter_icons:
   image_path: "assets/icons/app_icon.png"
 
 flutter_launcher_name:
-  name: "Opus Banking"
+  name: "Cloud Pesa"
 
 flutter:
 

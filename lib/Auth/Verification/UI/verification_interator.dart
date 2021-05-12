@@ -1,4 +1,4 @@
 class VerificationInteractor {
-  void verificationDone() {}
+  void verificationDone(String verificationCode) {}
   void verifyNumber() {}
 }

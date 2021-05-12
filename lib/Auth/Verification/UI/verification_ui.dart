@@ -5,6 +5,7 @@ import 'package:opus_banking/Auth/Verification/UI/verification_interator.dart';
 import 'package:opus_banking/Components/custom_button.dart';
 import 'package:opus_banking/Components/entry_field.dart';
 import 'package:opus_banking/Locale/locale.dart';
+import 'package:opus_banking/Routes/AppConfig.dart';
 
 class VerificationUI extends StatefulWidget {
   final VerificationInteractor verificationInteractor;
@@ -19,6 +20,8 @@ class _VerificationUIState extends State<VerificationUI> {
   final TextEditingController _controller = TextEditingController();
   int _counter = 20;
   Timer _timer;
+  String phoneNumber;
+  TextEditingController otpController = new TextEditingController();
 
   _startTimer() {
     _counter = 20; //time counter
@@ -30,10 +33,12 @@ class _VerificationUIState extends State<VerificationUI> {
   }
 
   @override
-  void initState() {
+  Future<void> initState()  {
     super.initState();
+
     _startTimer();
     widget.verificationInteractor.verifyNumber();
+    setPhoneNumber();
   }
 
   @override
@@ -45,6 +50,7 @@ class _VerificationUIState extends State<VerificationUI> {
 
   @override
   Widget build(BuildContext context) {
+
     var locale = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
@@ -58,7 +64,7 @@ class _VerificationUIState extends State<VerificationUI> {
               height: 20,
             ),
             Text(
-              locale.enterOTPSentOn + '\n' + '+1 987 654 3210',
+              locale.enterOTPSentOn + '\n' + '${phoneNumber}',
               style:
                   Theme.of(context).textTheme.subtitle2.copyWith(fontSize: 15),
             ),
@@ -69,15 +75,18 @@ class _VerificationUIState extends State<VerificationUI> {
               padding: EdgeInsets.symmetric(horizontal: 25),
               child: EntryField(
                 hint: locale.enterOTPCode,
+                controller: otpController,
+
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 12),
               child: CustomButton(
-                onTap: () => widget.verificationInteractor.verificationDone(),
+                onTap: () => widget.verificationInteractor.verificationDone(otpController.value.toString()),
               ),
             ),
             Spacer(),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40.0),
               child: Text(
@@ -97,5 +106,11 @@ class _VerificationUIState extends State<VerificationUI> {
         slideCurve: Curves.linearToEaseOut,
       ),
     );
+  }
+
+  void setPhoneNumber() async{
+
+    phoneNumber = await AppConfig.retrieveFromSharedPrefs('Username');
+
   }
 }

@@ -218,6 +218,10 @@ class AppLocalizations {
     return _localizedValues[locale.languageCode]['emailAddress'];
   }
 
+  String get IDNumber {
+    return _localizedValues[locale.languageCode]['IDNumber'];
+  }
+
   String get accountNumber {
     return _localizedValues[locale.languageCode]['accountNumber'];
   }
@@ -494,8 +498,19 @@ class AppLocalizations {
     return _localizedValues[locale.languageCode]['phoneNumber'];
   }
 
+  String get mobileNumber {
+    return _localizedValues[locale.languageCode]['mobileNumber'];
+  }
+
   String get enterYourPhoneNumber {
     return _localizedValues[locale.languageCode]['enterYourPhoneNumber'];
+  }
+String get unique_id {
+    return _localizedValues[locale.languageCode]['unique_id'];
+  }
+
+  String get memberNumber {
+    return _localizedValues[locale.languageCode]['memberNumber'];
   }
 
   String get yourMsg {

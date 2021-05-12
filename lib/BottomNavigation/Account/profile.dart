@@ -2,6 +2,7 @@ import 'package:animation_wrappers/animation_wrappers.dart';
 import 'package:flutter/material.dart';
 import 'package:opus_banking/Components/custom_button.dart';
 import 'package:opus_banking/Locale/locale.dart';
+import 'package:opus_banking/Routes/AppConfig.dart';
 import 'package:opus_banking/Theme/colors.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -13,6 +14,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     var locale = AppLocalizations.of(context);
+    AppConfig.getMemberData();
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -62,13 +64,13 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18.0),
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: Column(
                 children: [
                   buildTextField(
                     context,
                     locale.fullName,
-                    'Sam Smith',
+                    AppConfig.name,
                   ),
                   buildTextField(
                     context,
@@ -77,13 +79,24 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   buildTextField(
                     context,
+                    locale.IDNumber,
+                    AppConfig.id_no,
+                  ),
+                  buildTextField(
+                    context,
                     locale.accountNumber,
                     '1142 1154 3652 5826',
                   ),
                   buildTextField(
                     context,
-                    locale.customerID,
-                    'HDXC1141252',
+                    locale.mobileNumber,
+                    AppConfig.mobileNo
+                  ),
+
+                  buildTextField(
+                      context,
+                      locale.unique_id,
+                      AppConfig.unique_id
                   ),
                 ],
               ),

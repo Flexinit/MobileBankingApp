@@ -1,7 +1,7 @@
 import 'package:animation_wrappers/animation_wrappers.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:international_phone_input/international_phone_input.dart';
+//import 'package:international_phone_input/international_phone_input.dart';
 import 'package:opus_banking/Auth/Registration/UI/registration_interactor.dart';
 import 'package:opus_banking/Components/custom_button.dart';
 import 'package:opus_banking/Components/entry_field.dart';
@@ -89,7 +89,7 @@ class _RegistrationUIState extends State<RegistrationUI> {
             SizedBox(
               height: 20,
             ),
-            Padding(
+    /*        Padding(
               padding: EdgeInsets.symmetric(horizontal: 25, vertical: 12),
               child: InternationalPhoneInput(
                 onPhoneNumberChange: onPhoneNumberChange,
@@ -103,15 +103,15 @@ class _RegistrationUIState extends State<RegistrationUI> {
               //child: EntryField(
               // hint: locale.emailCustomerID,
               //),
-            ),
-            /* Padding(
+            ),*/
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 25),
               child: EntryField(
                 hint: locale.enterAccountNumber,
                 prefixIcon: Icons.account_balance,
 
               ),
-              ),*/
+              ),
 
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 25),
@@ -215,7 +215,7 @@ class _RegistrationUIState extends State<RegistrationUI> {
 
   void onPhoneNumberChange(
       String number, String internationalizedPhoneNumber, String isoCode) {
-    print(number);
+    print('********PHONE**********${number}');
     setState(() {
       phoneNumber = number;
       phoneIsoCode = isoCode;

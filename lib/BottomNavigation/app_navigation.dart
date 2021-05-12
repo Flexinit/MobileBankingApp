@@ -26,7 +26,7 @@ class _AppNavigationState extends State<AppNavigation> {
       BottomNavigationBarItem(
         icon: ImageIcon(AssetImage('assets/footer icons/ic_banking.png')),
         activeIcon:
-            ImageIcon(AssetImage('assets/footer icons/ic_banking_act.png')),
+        ImageIcon(AssetImage('assets/footer icons/ic_banking_act.png')),
         label: locale.banking,
       ),
       BottomNavigationBarItem(
@@ -34,7 +34,7 @@ class _AppNavigationState extends State<AppNavigation> {
           AssetImage('assets/footer icons/ic_transaction.png'),
         ),
         activeIcon:
-            ImageIcon(AssetImage('assets/footer icons/ic_transaction_act.png')),
+        ImageIcon(AssetImage('assets/footer icons/ic_transaction_act.png')),
         label: locale.transactions,
       ),
       BottomNavigationBarItem(
@@ -42,7 +42,7 @@ class _AppNavigationState extends State<AppNavigation> {
           AssetImage('assets/footer icons/ic_accounts.png'),
         ),
         activeIcon:
-            ImageIcon(AssetImage('assets/footer icons/ic_accounts_act.png')),
+        ImageIcon(AssetImage('assets/footer icons/ic_accounts_act.png')),
         label: locale.account,
       ),
     ];
